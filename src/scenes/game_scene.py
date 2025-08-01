@@ -7,13 +7,13 @@ from src.sprites.bullet import Bullet
 from src.utils.settings import SCREEN_WIDTH, SCREEN_HEIGHT, WHITE, BLACK
 
 class GameScene(Scene):
-    def __init__(self):
+    def __init__(self, selected_character):
         super().__init__()
         self.all_sprites = pygame.sprite.Group()
         self.ants = pygame.sprite.Group()
         self.bullets = pygame.sprite.Group()
 
-        self.player = Player()
+        self.player = Player(selected_character)
         self.all_sprites.add(self.player)
 
         self.score = 0

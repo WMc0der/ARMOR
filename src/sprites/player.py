@@ -3,10 +3,14 @@ import pygame
 from src.utils.settings import SCREEN_WIDTH, SCREEN_HEIGHT, WHITE
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, selected_character):
         super().__init__()
-        self.image = pygame.Surface((50, 50))
-        self.image.fill(WHITE)
+        self.character_images = [
+            pygame.image.load("/Users/thele/workspace/github.com/WMc0der/ARMOR/assets/images/player1.png").convert_alpha(),
+            pygame.image.load("/Users/thele/workspace/github.com/WMc0der/ARMOR/assets/images/player2.png").convert_alpha(),
+            pygame.image.load("/Users/thele/workspace/github.com/WMc0der/ARMOR/assets/images/player3.png").convert_alpha(),
+        ]
+        self.image = self.character_images[selected_character]
         self.rect = self.image.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50))
         self.speed = 5
         self.health = 100
