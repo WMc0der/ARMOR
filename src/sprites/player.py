@@ -14,13 +14,17 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50))
         self.speed = 5
         self.health = 100
+        self.change_x = 0
+        self.change_y = 0
 
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.rect.x -= self.speed
-        if keys[pygame.K_RIGHT]:
-            self.rect.x += self.speed
+            self.change_x = -self.speed
+        elif keys[pygame.K_RIGHT]:
+            self.change_x = self.speed
+        else:
+            self.change_x = 0
 
         if self.rect.left < 0:
             self.rect.left = 0
