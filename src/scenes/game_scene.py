@@ -7,6 +7,7 @@ from src.sprites.bullet import Bullet
 from src.sprites.wall import Wall
 from src.sprites.pickups import HealthPickup, Poison
 from src.utils.settings import SCREEN_WIDTH, SCREEN_HEIGHT, WHITE, BLACK
+from src.scenes.game_over import GameOverScene
 
 class GameScene(Scene):
     def __init__(self, selected_character):
@@ -92,8 +93,7 @@ class GameScene(Scene):
         for hit in hits:
             self.player.health -= 25
             if self.player.health <= 0:
-                # Placeholder for game over
-                print("Game Over")
+                self.next_scene = GameOverScene(self.score)
 
         # Check for collisions between the player and pickups
         hits = pygame.sprite.spritecollide(self.player, self.pickups, True)
